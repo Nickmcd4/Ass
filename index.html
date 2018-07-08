@@ -16,14 +16,17 @@
     <div class="jumbotron jumbotron-fluid top">
         <div class="container">
           <h1 class="display-4">Train Schedules</h1>
-          <p class="lead">I've officially gone off the rails.</p>
+          <p class="lead">The *somewhat* live train schedule!</p>
           <br>
           <br>
           <h1 id="currentTime"></h1>
+          <br>
+          <button id="refresh">Refresh Schedule</button>
         </div>
     </div>
   
     
+
     <table class="table" id="infoTable">
             <thead>
               <tr>
@@ -36,10 +39,14 @@
               </tr>
             </thead>
             <tbody>
-    
+              
             </tbody>
     </table>
 
+
+    <!-- <div id="loading">
+      <img id="loadingGif" src="assets/images/loading.gif">
+    </div> -->
 
       <form>
             <div class="form-group">

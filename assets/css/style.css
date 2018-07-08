@@ -6,3 +6,11 @@
 .top {
     text-align: center;
 }
+
+#loadingGif {
+    width:20px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

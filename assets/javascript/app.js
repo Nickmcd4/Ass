@@ -49,9 +49,8 @@ console.log(theTrain.name);
 
 
 
-database.ref().on("child_added", function(childSnapshot){
+database.ref().on("child_added", function(childSnapshot){ //I want to run this function every minute to update train times without appending the new information!!
   console.log(childSnapshot.val()); //test Debug
-
   var trainName = childSnapshot.val().name;
   var destination = childSnapshot.val().location;
   var firstTrain = childSnapshot.val().start;
@@ -59,7 +58,7 @@ database.ref().on("child_added", function(childSnapshot){
   
 
   //TIME CONVERSIONS
-  var firstTrainConversion = moment(firstTrain, "HH:mm");
+  var firstTrainConversion = moment(firstTrain, "HH:mm").subtract(1, "years");
   console.log(firstTrainConversion);
   var currentTime = moment().format("HH:mm");
   console.log(currentTime + "CURRENT TIME"); //Test debug
@@ -74,24 +73,33 @@ database.ref().on("child_added", function(childSnapshot){
   var arrival = moment().add(finalMinutesTrain, "minutes").format("HH:mm");
 
   //everything is working, finally append everything to my table
+    
+  $("#infoTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td id='arrival'>" + arrival + "</td><td id='finalMinutesTrain'>" + finalMinutesTrain + "</td><td>" + "<button id='delete'>remove</button>" + "</td></tr>");
+
+  function updateDiv(){ 
+    $("#infoTable").load(location.href + " #infoTable");
+}
+setInterval (updateDiv, 10000);
+
+
+  $('#delete').on('click', function(){
+    $(this).remove();
+  });
   
 
-  
-  
-  $("#infoTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + arrival + "</td><td>" + finalMinutesTrain + "</td><td>" + "<button id='delete'>remove</button>" + "</td></tr>");
-  
-  
-
-  function update() {
-     $('#currentTime').html("Current Time: " + moment().format('DD MMMM YYYY H:mm:ss'));  
-  }
-
-  setInterval(update, 1000);
 
 });
 
 
+function update() {
+  $('#currentTime').html("Current Time: " + moment().format('DD MMMM YYYY H:mm:ss'));  
+}
 
+setInterval(update, 1000);
+
+$('#refresh').on('click', function(){
+    location.reload();
+});
 });
 
 
