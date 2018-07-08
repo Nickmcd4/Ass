@@ -17,11 +17,14 @@
         <div class="container">
           <h1 class="display-4">Train Schedules</h1>
           <p class="lead">I've officially gone off the rails.</p>
+          <br>
+          <br>
+          <h1 id="currentTime"></h1>
         </div>
-      </div>
-
-
-    <table class="table">
+    </div>
+  
+    
+    <table class="table" id="infoTable">
             <thead>
               <tr>
                 <th scope="col">Train Name</th>
@@ -29,16 +32,10 @@
                 <th scope="col">Frequency (min)</th>
                 <th scope="col">Next Arrival</th>
                 <th scope="col">Minutes Away</th>
+                <th scope="col"> </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">Name Ex</th>
-                <td>Denver</td>
-                <td>34</td>
-                <td>2:30 PM</td>
-                <td>10</td>
-              </tr>
     
             </tbody>
     </table>
@@ -47,25 +44,25 @@
       <form>
             <div class="form-group">
               <label for="trainName">Train Name</label>
-              <input type="text" class="form-control">
+              <input id = "name" type="text" class="form-control">
             </div>
 
             <div class="form-group">
-              <label for="trainName">Destination</label>
-              <input type="text" class="form-control">
+              <label for="destination">Destination</label>
+              <input id = "destination" type="text" class="form-control">
             </div>
 
             <div class="form-group">
-              <label for="trainName">First Train Time (HH:mm - military time)</label>
-              <input type="text" class="form-control">
+              <label for="firstTime">First Train Time (HH:mm - military time)</label>
+              <input id="firstTrainTime" type="text" class="form-control">
             </div>
 
             <div class="form-group">
               <label for="trainName">Frequency (min)</label>
-              <input type="text" class="form-control">
+              <input id="frequency" type="text" class="form-control">
             </div>
            
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" id="trainInfo"></input>
           </form>
 
 
